@@ -6,76 +6,51 @@
 //  Copyright © 2019 g4zeru. All rights reserved.
 //
 
-import SwiftUI
 import MediaPlayer
 import RxSwift
+import SwiftUI
 
 struct MiniPlayerView: View {
-    @ObservedObject var playingItem: PlayItem = .shared
+    @ObservedObject var observer: NowPlayingItemObserver
     private let height: CGFloat
-    private let player = MPMusicPlayerApplicationController.applicationMusicPlayer
-    init(height: CGFloat) {
+    private let player: MPMusicPlayerController
+    init(height: CGFloat, player: MPMusicPlayerController = MPMusicPlayerApplicationController.applicationMusicPlayer) {
+        self.player = player
         self.height = height
+        observer = .init(player: player)
     }
+
     var body: some View {
         HStack {
-            Image(uiImage: playingItem.playingItem?.artwork?.image(at: CGSize(width: 100, height: 100)) ?? UIImage(imageLiteralResourceName: "ICON"))
-                .resizable()
-                .frame(width: height - 20, height: height - 20)
-                .cornerRadius(8)
-            Text(playingItem.playingItem?.title ?? "再生停止中")
-            Spacer()
-            Button(action: {
-                if self.player.playbackState == .playing {
-                    self.player.stop()
-                } else {
-                    self.player.prepareToPlay()
-                    self.player.play()
-                }
-            }) {
-                Text(/*@START_MENU_TOKEN@*/"Button"/*@END_MENU_TOKEN@*/)
+            if observer.playingItem?.artwork != nil {
+                Image(uiImage: observer.playingItem!.artwork!.image(at: CGSize(width: 100, height: 100)) ?? .init())
+                    .resizable()
+                    .frame(width: height - 20, height: height - 20)
+                    .cornerRadius(8)
             }
+            Text(observer.playingItem?.title ?? "再生停止中").lineLimit(2)
+            Spacer()
+            Playback(player: player)
+                .frame(height: 23)
             Button(action: {
                 self.player.skipToNextItem()
             }) {
-                Text(/*@START_MENU_TOKEN@*/"Button"/*@END_MENU_TOKEN@*/)
-            }
+                Image(systemName: "forward.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 20)
+                    .foregroundColor(.pink)
+            }.padding(.leading, 15)
         }
         .padding(.horizontal, 20)
         .frame(height: height)
-        .onTapGesture {
-            Dispatcher.shared.showPlayer.accept(())
-        }.background(Color.clear)
+        .background(Color(.systemBackground))
+        .disabled(player.nowPlayingItem == nil)
     }
 }
 
 struct MiniPlayerView_Previews: PreviewProvider {
     static var previews: some View {
         MiniPlayerView(height: 55)
-    }
-}
-
-class PlayItem: ObservableObject {
-    @Published var playingItem: MPMediaItem?
-    @Published var playbackTime: TimeInterval = 0
-    var isEditing: Bool = false
-    static let shared = PlayItem()
-    private var timer: Timer = Timer()
-    
-    private let disposeBag = DisposeBag()
-    init() {
-        NotificationCenter.default.addObserver(self, selector: #selector(didChangePlayingItem), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCurrentTime), userInfo: nil, repeats: true)
-        
-    }
-    
-    @objc private func didChangePlayingItem() {
-        playingItem = MPMusicPlayerApplicationController.applicationMusicPlayer.nowPlayingItem
-    }
-    
-    @objc private func updateCurrentTime() {
-        if !isEditing {
-            playbackTime = MPMusicPlayerApplicationController.applicationMusicPlayer.currentPlaybackTime
-        }
     }
 }

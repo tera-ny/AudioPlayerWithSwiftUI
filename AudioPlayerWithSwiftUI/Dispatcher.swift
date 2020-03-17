@@ -7,3 +7,13 @@
 //
 
 import Foundation
+import MediaPlayer
+import Napoli
+
+class QueueDispatcher: DispatcherStoreProtocol {
+    var store: [String: (QueueDispatcher.Action) -> Void] = [:]
+
+    typealias Action = (MPMediaItemCollection, MPMediaItem?)
+
+    static let shared = QueueDispatcher()
+}

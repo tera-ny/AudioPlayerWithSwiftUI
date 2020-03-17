@@ -14,7 +14,7 @@ struct Artist {
     let name: String
     init? (collection: MPMediaItemCollection) {
         guard let item = collection.representativeItem else { return nil }
-        self.id = item.artistPersistentID
-        self.name = item.artist ?? ""
+        id = item.artistPersistentID
+        name = item.artist ?? ""
     }
 }

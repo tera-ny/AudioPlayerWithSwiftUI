@@ -10,7 +10,7 @@ import MediaPlayer
 import SwiftUI
 
 struct SeekBar: View {
-    @Binding var player: MPMusicPlayerController
+    let player: MPMusicPlayerController
     @State var isEditing: Bool = false
     @State var time: TimeInterval = 0
 
@@ -38,14 +38,12 @@ struct SeekBar: View {
             if !self.isEditing {
                 self.time = self.player.currentPlaybackTime
             }
-            print(self.player.currentPlaybackTime)
         }
     }
 }
 
 struct SeekBar_Previews: PreviewProvider {
-    @State static var player = MPMusicPlayerController.applicationMusicPlayer
     static var previews: some View {
-        SeekBar(player: SeekBar_Previews.$player)
+        SeekBar(player: MPMusicPlayerController.applicationMusicPlayer)
     }
 }

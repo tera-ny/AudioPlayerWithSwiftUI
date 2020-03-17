@@ -6,9 +6,9 @@
 //  Copyright © 2019 g4zeru. All rights reserved.
 //
 
-import SwiftUI
 import MediaPlayer
 import StoreKit
+import SwiftUI
 
 struct HomeView: View {
     enum HomeListElement: String, CaseIterable {
@@ -18,22 +18,59 @@ struct HomeView: View {
         case PlayList
         case Genre
     }
-    init() {
-        MPMediaLibrary.requestAuthorization { status in
-            print(status)
+
+    private class QueueObserver {
+        private var token: String?
+        private var dispatcher: QueueDispatcher
+        deinit {
+            dispatcher.unSubscribe(token: token!)
         }
-    }
-    var body: some View {
-        NavigationView {
-            List(HomeListElement.allCases, id: \.id) { element in
-                NavigationLink(destination: element.view) {
-                    VStack {
-                        Text(element.rawValue)
-                            .font(.system(size: 25))
-                    }
+
+        init(dispatcher: QueueDispatcher, player: MPMusicPlayerController) {
+            self.dispatcher = dispatcher
+            token = dispatcher.subscribe { collection, item in
+                player.setQueue(with: collection)
+                if let item = item {
+                    player.setQueue(with: collection)
+                    player.nowPlayingItem = item
+                    player.prepareToPlay()
+                    player.play()
                 }
             }
-            .navigationBarTitle(Text("Home"))
+        }
+    }
+
+    @State private var shouldPresent: Bool = false
+    private let miniPlayerHeight: CGFloat = 70
+    private let player: MPMusicPlayerController
+    private let queueObserver: QueueObserver
+
+    init() {
+        MPMediaLibrary.requestAuthorization { _ in }
+        player = .applicationMusicPlayer
+        queueObserver = QueueObserver(dispatcher: .shared, player: player)
+    }
+
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            NavigationView {
+                List(HomeListElement.allCases, id: \.id) { element in
+                    NavigationLink(destination: element.view) {
+                        VStack {
+                            Text(element.rawValue)
+                                .font(.system(size: 25))
+                        }
+                    }
+                }
+                .navigationBarTitle(Text("Home"))
+            }.padding(.bottom, miniPlayerHeight)
+            MiniPlayerView(height: miniPlayerHeight, player: player)
+                .onTapGesture {
+                    self.shouldPresent = self.player.nowPlayingItem != nil
+                }
+                .sheet(isPresented: $shouldPresent) {
+                    PlayerView(player: self.player)
+                }
         }
     }
 }
@@ -46,35 +83,36 @@ struct HomeView_Previews: PreviewProvider {
 
 extension HomeView.HomeListElement {
     var id: String {
-        return self.rawValue
+        return rawValue
     }
+
     var view: AnyView {
         switch self {
         case .Albums:
-            return AnyView(AlbumListView())
+            return AnyView(AlbumListView().navigationBarTitle(Text("Albums")))
         case .Artist:
             return AnyView(ArtistListView())
+        case .Songs:
+            return AnyView(SongsListView())
         default:
             return AnyView(ContentView())
         }
     }
 }
 
-struct SKCloudServiceSetupView : UIViewControllerRepresentable {
-
+struct SKCloudServiceSetupView: UIViewControllerRepresentable {
     typealias UIViewControllerType = SKCloudServiceSetupViewController
 
-    func makeUIViewController(context: UIViewControllerRepresentableContext<SKCloudServiceSetupView>) -> SKCloudServiceSetupView.UIViewControllerType {
+    func makeUIViewController(context _: UIViewControllerRepresentableContext<SKCloudServiceSetupView>) -> SKCloudServiceSetupView.UIViewControllerType {
         return UIViewControllerType()
     }
 
-    func updateUIViewController(_ uiViewController: SKCloudServiceSetupView.UIViewControllerType, context: UIViewControllerRepresentableContext<SKCloudServiceSetupView>) {
-    }
+    func updateUIViewController(_: SKCloudServiceSetupView.UIViewControllerType, context _: UIViewControllerRepresentableContext<SKCloudServiceSetupView>) {}
 }
 
 class CloudServiceSetupStatus: NSObject, SKCloudServiceSetupViewControllerDelegate, ObservableObject {
     @Published var shouldClose: Bool = false
-    func cloudServiceSetupViewControllerDidDismiss(_ cloudServiceSetupViewController: SKCloudServiceSetupViewController) {
+    func cloudServiceSetupViewControllerDidDismiss(_: SKCloudServiceSetupViewController) {
         shouldClose = true
     }
 }

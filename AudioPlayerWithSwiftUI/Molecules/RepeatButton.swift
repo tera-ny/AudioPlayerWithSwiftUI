@@ -6,8 +6,8 @@
 //  Copyright © 2020 g4zeru. All rights reserved.
 //
 
-import SwiftUI
 import MediaPlayer
+import SwiftUI
 
 struct RepeatButton: View {
     @Binding var repeatMode: MPMusicRepeatMode
@@ -53,7 +53,7 @@ struct RepeatButton: View {
                     default:
                         return .pink
                     }
-                    }())
+                }())
         }
     }
 }
