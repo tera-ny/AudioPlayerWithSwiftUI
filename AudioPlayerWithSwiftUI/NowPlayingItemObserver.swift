@@ -1,5 +1,5 @@
 //
-//  Dispatcher.swift
+//  NowPlayingItemObserver.swift
 //  AudioPlayerWithSwiftUI
 //
 //  Created by iniad on 2020/03/17.

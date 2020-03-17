@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ArtistDetailRow: View {
+struct AlbumCell: View {
     private let album: Album
     init(album: Album) {
         self.album = album
@@ -24,12 +24,13 @@ struct ArtistDetailRow: View {
             }
             Text(album.title).bold().lineLimit(1)
             Text(Calendar.dateConvert(date: album.releaseDate) ?? "")
+                .font(.system(size: 13))
         }
     }
 }
 
 struct ArtistDetailRow_Previews: PreviewProvider {
     static var previews: some View {
-        ArtistDetailRow(album: Album(title: "testsjklkslakjsdldaf", artist: "artist", date: Date(), artwork: #imageLiteral(resourceName: "ICON.png")))
+        AlbumCell(album: Album(title: "testsjklkslakjsdldaf", artist: "artist", date: Date(), artwork: #imageLiteral(resourceName: "ICON.png")))
     }
 }

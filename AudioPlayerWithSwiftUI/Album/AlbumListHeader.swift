@@ -11,10 +11,12 @@ import SwiftUI
 struct AlbumListViewRow: View {
     private let album: Album
     private let image: Image
-    init(album: Album) {
+    private let canPushArtistList: Bool
+    init(album: Album, canPushArtistList: Bool = false) {
         let artwork = album.artwork ?? UIImage()
         image = Image(uiImage: artwork)
         self.album = album
+        self.canPushArtistList = canPushArtistList
     }
     var body: some View {
         HStack {
@@ -24,12 +26,21 @@ struct AlbumListViewRow: View {
                     .font(.system(size: 19))
                     .bold()
                     .lineLimit(2)
-                Text(album.artist)
-                    .font(.system(size: 16))
-                    .foregroundColor(.pink)
-                    .lineLimit(2)
+                if canPushArtistList {
+                    NavigationLink(destination: ArtistDetailView(artistID: album.artistID!, artist: album.artist)) {
+                            Text(self.album.artist)
+                                .font(.system(size: 16))
+                                .foregroundColor(.pink)
+                                .lineLimit(2)
+                    }.buttonStyle(PlainButtonStyle())
+                } else {
+                    Text(self.album.artist)
+                        .font(.system(size: 16))
+                        .foregroundColor(.pink)
+                        .lineLimit(2)
+                }
                 Spacer()
-                Text(Calendar.dateConvert(date: album.releaseDate) ?? "")
+                Text(Calendar.dateConvert(date: album.releaseDate) ?? "").font(.system(size: 14))
             }
         }
     }
