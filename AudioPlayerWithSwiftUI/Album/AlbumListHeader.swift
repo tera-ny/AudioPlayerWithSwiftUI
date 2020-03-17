@@ -1,5 +1,5 @@
 //
-//  AlbumListViewRow.swift
+//  AlbumListHeader.swift
 //  AudioPlayerWithSwiftUI
 //
 //  Created by iniad on 2019/12/13.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct AlbumListViewRow: View {
+struct AlbumListHeader: View {
     private let album: Album
     private let image: Image
     private let canPushArtistList: Bool
@@ -18,6 +18,7 @@ struct AlbumListViewRow: View {
         self.album = album
         self.canPushArtistList = canPushArtistList
     }
+
     var body: some View {
         HStack {
             image.resizable().frame(width: 120, height: 120).cornerRadius(8)
@@ -28,10 +29,10 @@ struct AlbumListViewRow: View {
                     .lineLimit(2)
                 if canPushArtistList {
                     NavigationLink(destination: ArtistDetailView(artistID: album.artistID!, artist: album.artist)) {
-                            Text(self.album.artist)
-                                .font(.system(size: 16))
-                                .foregroundColor(.pink)
-                                .lineLimit(2)
+                        Text(self.album.artist)
+                            .font(.system(size: 16))
+                            .foregroundColor(.pink)
+                            .lineLimit(2)
                     }.buttonStyle(PlainButtonStyle())
                 } else {
                     Text(self.album.artist)
@@ -46,8 +47,8 @@ struct AlbumListViewRow: View {
     }
 }
 
-struct AlbumListViewRow_Previews: PreviewProvider {
+struct AlbumListHeader_Previews: PreviewProvider {
     static var previews: some View {
-        AlbumListViewRow(album: .init(title: "テスト", artist: "テスト"))
+        AlbumListHeader(album: .init(title: "テスト", artist: "テスト"))
     }
 }

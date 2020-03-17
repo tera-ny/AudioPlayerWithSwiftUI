@@ -6,17 +6,18 @@
 //  Copyright © 2019 g4zeru. All rights reserved.
 //
 
-import SwiftUI
 import MediaPlayer
+import SwiftUI
 
 struct AlbumDetailView: View {
     private let album: Album
     init(album: Album) {
         self.album = album
     }
+
     var body: some View {
         VStack(alignment: .leading) {
-            AlbumListViewRow(album: album).frame(height: 120).padding(.leading)
+            AlbumListHeader(album: album, canPushArtistList: true).frame(height: 120).padding(.leading)
             List(album.items, id: \.persistentID) { item in
                 Button(action: {
                     self.play(item: item)
@@ -32,13 +33,10 @@ struct AlbumDetailView: View {
         .navigationBarTitle(Text(""), displayMode: .inline)
         .padding(.top, 10)
     }
+
     private func play(item: MPMediaItem) {
         let collection = MPMediaItemCollection(items: album.items)
-        let player = MPMusicPlayerApplicationController.applicationMusicPlayer
-        player.setQueue(with: collection)
-        player.nowPlayingItem = item
-        player.prepareToPlay()
-        player.play()
+        QueueDispatcher.shared.on(action: (collection, item))
     }
 }
 
