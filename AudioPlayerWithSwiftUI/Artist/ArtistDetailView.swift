@@ -6,9 +6,9 @@
 //  Copyright © 2019 g4zeru. All rights reserved.
 //
 
-import SwiftUI
 import MediaPlayer
 import QGrid
+import SwiftUI
 
 struct ArtistDetailView: View {
     private let query: MPMediaQuery
@@ -19,11 +19,14 @@ struct ArtistDetailView: View {
         let artistFilter = MPMediaPropertyPredicate(value: artistID, forProperty: MPMediaItemPropertyArtistPersistentID)
         query.addFilterPredicate(artistFilter)
     }
+
     var body: some View {
-        QGrid(query.collections?.compactMap{ Album.init(collection: $0) } ?? [], columns: 2) { album in
-            ArtistDetailRow(album: album)
-                .padding(.horizontal, 5)
-        }.navigationBarTitle(Text(artist))
+        QGrid(query.collections?.compactMap { Album(collection: $0) } ?? [], columns: 2) { album in
+            NavigationLink(destination: AlbumDetailView(album: album)) {
+                AlbumCell(album: album)
+            }
+        }
+        .navigationBarTitle(Text(artist))
     }
 }
 

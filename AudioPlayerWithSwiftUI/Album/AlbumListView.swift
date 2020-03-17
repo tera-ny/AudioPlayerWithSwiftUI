@@ -6,19 +6,20 @@
 //  Copyright © 2019 g4zeru. All rights reserved.
 //
 
-import SwiftUI
 import MediaPlayer
+import QGrid
+import SwiftUI
 
 struct AlbumListView: View {
     var body: some View {
-        List(MPMediaQuery.albums().collections?
-            .compactMap { $0 }
-            .map{Album.init(collection: $0)} ?? [],
-             id: \.id) { album in
+        QGrid(MPMediaQuery.albums()
+            .collections?
+            .compactMap { Album(collection: $0) } ?? [],
+              columns: UIDevice.current.orientation.isLandscape ? 3 : 2, vPadding: 0) { album in
             NavigationLink(destination: AlbumDetailView(album: album)) {
-                AlbumListViewRow(album: album)
+                AlbumCell(album: album)
             }
-        }.navigationBarTitle(Text("Albums"))
+        }
     }
 }
 

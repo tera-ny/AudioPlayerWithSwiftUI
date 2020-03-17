@@ -7,31 +7,33 @@
 //
 
 import Foundation
-import UIKit
 import MediaPlayer
+import UIKit
 
 struct Album: Identifiable {
     var title: String
     var artist: String
+    var artistID: MPMediaEntityPersistentID?
     var releaseDate: Date?
     var artwork: UIImage?
     var items: [MPMediaItem]
     var id: MPMediaEntityPersistentID
     init(collection: MPMediaItemCollection) {
-        self.title = collection.representativeItem?.albumTitle ?? ""
-        self.artist = collection.representativeItem?.albumArtist ?? ""
-        self.releaseDate = collection.representativeItem?.releaseDate
-        self.artwork = collection.representativeItem?.artwork?.image(at: CGSize(width: 200, height: 200))
-        self.items = collection.items
-        self.id = collection.representativeItem!.albumPersistentID
+        title = collection.representativeItem?.albumTitle ?? ""
+        artist = collection.representativeItem?.albumArtist ?? ""
+        artistID = collection.representativeItem?.artistPersistentID
+        releaseDate = collection.representativeItem?.releaseDate
+        artwork = collection.representativeItem?.artwork?.image(at: CGSize(width: 200, height: 200))
+        items = collection.items
+        id = collection.representativeItem!.albumPersistentID
     }
-    
+
     init(title: String, artist: String, date: Date? = nil, artwork: UIImage? = nil) {
         self.title = title
         self.artist = artist
-        self.releaseDate = date
+        releaseDate = date
         self.artwork = artwork
-        self.items = []
-        self.id = UInt64.random(in: 0...2000)
+        items = []
+        id = UInt64.random(in: 0 ... 2000)
     }
 }

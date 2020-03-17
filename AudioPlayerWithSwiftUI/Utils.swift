@@ -9,6 +9,10 @@
 import Foundation
 
 extension Calendar {
+    static func timeToString(interval: TimeInterval) -> String {
+        return timeToString(time: Float(interval))
+    }
+
     static func timeToString(time: Float) -> String {
         let second: Int
         let minute: Int
@@ -16,6 +20,7 @@ extension Calendar {
         minute = Int(time) / 60
         return "\(minute):\(NSString(format: "%02d", second))"
     }
+
     static func dateConvert(date: Date?) -> String? {
         guard let date = date else {
             return nil

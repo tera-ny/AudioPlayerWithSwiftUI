@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "Napoli",
+        "repositoryURL": "https://github.com/g4zeru/Napoli",
+        "state": {
+          "branch": null,
+          "revision": "d988ecd4fe13ff3dec16e45af172a2c6343b7324",
+          "version": "0.0.1"
+        }
+      },
+      {
         "package": "QGrid",
         "repositoryURL": "https://github.com/Q-Mobile/QGrid.git",
         "state": {
@@ -15,8 +24,17 @@
         "repositoryURL": "https://github.com/ReactiveX/RxSwift.git",
         "state": {
           "branch": null,
-          "revision": "b3e888b4972d9bc76495dd74d30a8c7fad4b9395",
-          "version": "5.0.1"
+          "revision": "c1bd31b397d87a54467af4161dde9d6b27720c19",
+          "version": "5.1.0"
+        }
+      },
+      {
+        "package": "SwiftUIX",
+        "repositoryURL": "https://github.com/g4zeru/SwiftUIX",
+        "state": {
+          "branch": "master",
+          "revision": "8f7d4b894f750b544e197881b4aeb029980323bc",
+          "version": null
         }
       }
     ]
