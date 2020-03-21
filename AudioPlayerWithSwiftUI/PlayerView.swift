@@ -12,7 +12,6 @@ import SwiftUI
 
 struct PlayerView: View {
     @State var player: MPMusicPlayerController
-    @State var repeatMode: MPMusicRepeatMode = MPMusicPlayerApplicationController.applicationMusicPlayer.repeatMode
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
             VStack(spacing: 30) {
