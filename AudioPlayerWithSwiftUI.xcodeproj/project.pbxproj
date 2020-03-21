@@ -20,7 +20,6 @@
 		B99220FD23A3ACC8000F1277 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99220FC23A3ACC8000F1277 /* AppDelegate.swift */; };
 		B99220FF23A3ACC8000F1277 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99220FE23A3ACC8000F1277 /* SceneDelegate.swift */; };
 		B992210123A3ACC8000F1277 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B992210023A3ACC8000F1277 /* ContentView.swift */; };
-		B992210323A3ACCC000F1277 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B992210223A3ACCC000F1277 /* Assets.xcassets */; };
 		B992210623A3ACCC000F1277 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B992210523A3ACCC000F1277 /* Preview Assets.xcassets */; };
 		B992210923A3ACCC000F1277 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B992210723A3ACCC000F1277 /* LaunchScreen.storyboard */; };
 		B992211423A3ACCC000F1277 /* AudioPlayerWithSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B992211323A3ACCC000F1277 /* AudioPlayerWithSwiftUITests.swift */; };
@@ -40,6 +39,7 @@
 		B992215923A4927A000F1277 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = B992215823A4927A000F1277 /* Artist.swift */; };
 		B992216023A498AA000F1277 /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = B992215F23A498AA000F1277 /* QGrid */; };
 		B9AD7E982420EC5B00A16771 /* Napoli in Frameworks */ = {isa = PBXBuildFile; productRef = B9AD7E972420EC5B00A16771 /* Napoli */; };
+		B9AD7E9C24226D7E00A16771 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9AD7E9B24226D7E00A16771 /* Assets.xcassets */; };
 		B9E3DEB7241CDCEF00296CC6 /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E3DEB6241CDCEF00296CC6 /* AlbumCell.swift */; };
 		B9E3DEB9241CDD0E00296CC6 /* ArtistDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E3DEB8241CDD0E00296CC6 /* ArtistDetailView.swift */; };
 		B9E3DEBD241D0B1700296CC6 /* VisualEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E3DEBC241D0B1700296CC6 /* VisualEffect.swift */; };
@@ -72,11 +72,10 @@
 		B978DC99241FABE7003D7206 /* SeekBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekBar.swift; sourceTree = "<group>"; };
 		B978DC9B241FD157003D7206 /* RepeatButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatButton.swift; sourceTree = "<group>"; };
 		B978DC9D241FD2C4003D7206 /* PlaybackControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControl.swift; sourceTree = "<group>"; };
-		B99220F923A3ACC8000F1277 /* AudioPlayerWithSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioPlayerWithSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B99220F923A3ACC8000F1277 /* オト.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "オト.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B99220FC23A3ACC8000F1277 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B99220FE23A3ACC8000F1277 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B992210023A3ACC8000F1277 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		B992210223A3ACCC000F1277 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B992210523A3ACCC000F1277 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B992210823A3ACCC000F1277 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B992210A23A3ACCC000F1277 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -96,6 +95,7 @@
 		B992213F23A3F9FE000F1277 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		B992215623A49107000F1277 /* ArtistListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListView.swift; sourceTree = "<group>"; };
 		B992215823A4927A000F1277 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		B9AD7E9B24226D7E00A16771 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9E3DEB6241CDCEF00296CC6 /* AlbumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
 		B9E3DEB8241CDD0E00296CC6 /* ArtistDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistDetailView.swift; sourceTree = "<group>"; };
 		B9E3DEBC241D0B1700296CC6 /* VisualEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffect.swift; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 		B99220FA23A3ACC8000F1277 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B99220F923A3ACC8000F1277 /* AudioPlayerWithSwiftUI.app */,
+				B99220F923A3ACC8000F1277 /* オト.app */,
 				B992210F23A3ACCC000F1277 /* AudioPlayerWithSwiftUITests.xctest */,
 				B992211A23A3ACCC000F1277 /* AudioPlayerWithSwiftUIUITests.xctest */,
 			);
@@ -171,8 +171,8 @@
 				B992213923A3DC90000F1277 /* Utils.swift */,
 				B992215523A490E7000F1277 /* Artist */,
 				B992213223A3D3CD000F1277 /* Album */,
-				B992210223A3ACCC000F1277 /* Assets.xcassets */,
 				B992210723A3ACCC000F1277 /* LaunchScreen.storyboard */,
+				B9AD7E9B24226D7E00A16771 /* Assets.xcassets */,
 				B992210A23A3ACCC000F1277 /* Info.plist */,
 				B992210423A3ACCC000F1277 /* Preview Content */,
 			);
@@ -279,7 +279,7 @@
 				B9AD7E972420EC5B00A16771 /* Napoli */,
 			);
 			productName = AudioPlayerWithSwiftUI;
-			productReference = B99220F923A3ACC8000F1277 /* AudioPlayerWithSwiftUI.app */;
+			productReference = B99220F923A3ACC8000F1277 /* オト.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B992210E23A3ACCC000F1277 /* AudioPlayerWithSwiftUITests */ = {
@@ -373,8 +373,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B992210923A3ACCC000F1277 /* LaunchScreen.storyboard in Resources */,
+				B9AD7E9C24226D7E00A16771 /* Assets.xcassets in Resources */,
 				B992210623A3ACCC000F1277 /* Preview Assets.xcassets in Resources */,
-				B992210323A3ACCC000F1277 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,14 +593,15 @@
 				DEVELOPMENT_TEAM = 8446Z6F5D6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = AudioPlayerWithSwiftUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.iniad.AudioPlayerWithSwiftUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.g4zeru.oto;
+				PRODUCT_NAME = "オト";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -613,14 +614,15 @@
 				DEVELOPMENT_TEAM = 8446Z6F5D6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = AudioPlayerWithSwiftUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.iniad.AudioPlayerWithSwiftUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.g4zeru.oto;
+				PRODUCT_NAME = "オト";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
