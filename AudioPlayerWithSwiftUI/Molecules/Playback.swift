@@ -17,7 +17,10 @@ struct Playback: View {
         init(player: MPMusicPlayerController) {
             self.player = player
             state = player.playbackState
+            player.beginGeneratingPlaybackNotifications()
             observer = NotificationCenter.default.addObserver(forName: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: nil, queue: nil, using: updatePlayback(_:))
+            player.endGeneratingPlaybackNotifications()
+            
         }
 
         deinit {
