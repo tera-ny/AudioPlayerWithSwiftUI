@@ -52,17 +52,50 @@ struct HomeView: View {
     }
 
     var body: some View {
-        ZStack(alignment: .bottom) {
+        let state = MPMediaLibrary.authorizationStatus()
+        print(state)
+        return ZStack(alignment: .bottom) {
             NavigationView {
-                List(HomeListElement.allCases, id: \.id) { element in
-                    NavigationLink(destination: element.view) {
-                        VStack {
-                            Text(element.rawValue)
+                VStack {
+                    if state == .denied || state == .restricted {
+                        HStack(alignment: .center, spacing: 20) {
+                            Text("メディアアクセスを有効にしてください")
+                                .foregroundColor(.pink)
+                                .font(.system(size: 15, weight: Font.Weight.medium))
+                            Spacer()
+                            Button(action: {
+                                guard let url = URL(string: UIApplication.openSettingsURLString) else {
+                                    return
+                                }
+                                if UIApplication.shared.canOpenURL(url) {
+                                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                }
+                            }) {
+                                Text("設定へ")
+                                    .font(.system(size: 15, weight: Font.Weight.regular))
+                            }
+                        }
+                        .padding(.horizontal, 20)
+                    }
+                    List(HomeListElement.allCases, id: \.id) { element in
+                        if element.isComingSoon {
+                            HStack(alignment: .center) {
+                                Text(element.rawValue)
+                                    .font(.system(size: 25))
+                                Spacer()
+                                Text("Coming soon")
+                                    .font(.system(size: 16))
+                                    .foregroundColor(.secondary)
+                            }
+                        } else {
+                            NavigationLink(destination: element.view) {
+                                Text(element.rawValue)
                                 .font(.system(size: 25))
+                            }
                         }
                     }
+                    .navigationBarTitle(Text("Home"))
                 }
-                .navigationBarTitle(Text("Home"))
             }.padding(.bottom, miniPlayerHeight)
             MiniPlayerView(height: miniPlayerHeight, player: player)
                 .onTapGesture {
@@ -84,6 +117,15 @@ struct HomeView_Previews: PreviewProvider {
 extension HomeView.HomeListElement {
     var id: String {
         return rawValue
+    }
+
+    var isComingSoon: Bool {
+        switch self {
+        case .Albums, .Artist, .Songs:
+            return false
+        default:
+            return true
+        }
     }
 
     var view: AnyView {
