@@ -28,7 +28,9 @@ struct MiniPlayerView: View {
                     .frame(width: height - 20, height: height - 20)
                     .cornerRadius(8)
             }
-            Text(observer.playingItem?.title ?? "再生停止中").lineLimit(2)
+            Text(observer.playingItem?.title ?? "再生停止中")
+                .lineLimit(2)
+                .font(.system(size: 17 ,weight: .medium))
             Spacer()
             Playback(player: player)
                 .frame(height: 23)
