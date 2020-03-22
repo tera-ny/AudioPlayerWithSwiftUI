@@ -20,7 +20,9 @@ class NowPlayingItemObserver: ObservableObject {
     init(player: MPMusicPlayerController) {
         self.player = player
         playingItem = player.nowPlayingItem
+        player.beginGeneratingPlaybackNotifications()
         observer = NotificationCenter.default.addObserver(forName: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil, queue: nil, using: didChangePlayingItem(notification:))
+        player.endGeneratingPlaybackNotifications()
     }
 
     private func didChangePlayingItem(notification _: Notification) {

@@ -10,23 +10,29 @@ import MediaPlayer
 import SwiftUI
 
 struct RepeatButton: View {
-    @Binding var repeatMode: MPMusicRepeatMode
+    private let player: MPMusicPlayerController
+    @ObservedObject private var observer: KVOObserver<MPMusicPlayerController, MPMusicRepeatMode>
+    init(player: MPMusicPlayerController) {
+        self.player = player
+        observer = .init(monitoredObject: player, keypath: \.repeatMode)
+    }
     let imageHeight: CGFloat = 17
     var body: some View {
-        Button(action: {
-            switch self.repeatMode {
+        let repeatMode: MPMusicRepeatMode = observer.observedObject
+        return Button(action: {
+            switch repeatMode {
             case .none:
-                self.repeatMode = .all
+                self.player.repeatMode = .all
             case .one:
-                self.repeatMode = .none
+                self.player.repeatMode = .none
             case .all:
-                self.repeatMode = .one
+                self.player.repeatMode = .one
             default:
-                self.repeatMode = .all
+                applicationAssertError()
             }
         }) {
             Image(systemName: {
-                switch self.repeatMode {
+                switch repeatMode {
                 case .none:
                     return "repeat"
                 case .one:
@@ -35,22 +41,20 @@ struct RepeatButton: View {
                     return "repeat"
                 case .default:
                     return "repeat"
-                @unknown default:
-                    return "repeat"
                 }
             }())
                 .resizable()
                 .scaledToFit()
                 .frame(height: imageHeight)
                 .foregroundColor({
-                    switch self.repeatMode {
+                    switch repeatMode {
                     case .none:
                         return .gray
                     case .one:
                         return .pink
                     case .all:
                         return .pink
-                    default:
+                    case .default:
                         return .pink
                     }
                 }())
@@ -59,8 +63,8 @@ struct RepeatButton: View {
 }
 
 struct RepeatButton_Previews: PreviewProvider {
-    @State static var repeatMode: MPMusicRepeatMode = .all
+    static let player: MPMusicPlayerController = .applicationMusicPlayer
     static var previews: some View {
-        RepeatButton(repeatMode: $repeatMode)
+        RepeatButton(player: RepeatButton_Previews.player)
     }
 }

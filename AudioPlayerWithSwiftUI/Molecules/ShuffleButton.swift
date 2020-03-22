@@ -10,15 +10,21 @@ import MediaPlayer
 import SwiftUI
 
 struct ShuffleButton: View {
-    @Binding var shuffleMode: MPMusicShuffleMode
+    @ObservedObject var observer: KVOObserver<MPMusicPlayerController, MPMusicShuffleMode>
+    private let player: MPMusicPlayerController
     let imageHeight: CGFloat = 17
+    init(player: MPMusicPlayerController) {
+        observer = .init(monitoredObject: player, keypath: \.shuffleMode)
+        self.player = player
+    }
     var body: some View {
-        Button(action: {
-            switch self.shuffleMode {
+        let shuffleMode: MPMusicShuffleMode = observer.observedObject
+        return Button(action: {
+            switch shuffleMode {
             case .off:
-                self.shuffleMode = .songs
+                self.player.shuffleMode = .songs
             default:
-                self.shuffleMode = .off
+                self.player.shuffleMode = .off
             }
         }) {
             Image(systemName: "shuffle")
@@ -26,20 +32,20 @@ struct ShuffleButton: View {
                 .scaledToFit()
                 .frame(height: imageHeight)
                 .foregroundColor({
-                    switch self.shuffleMode {
+                    switch shuffleMode {
                     case .off:
                         return .gray
                     default:
                         return .pink
                     }
-                }())
+                    }())
         }
     }
 }
 
 struct ShuffleButton_Previews: PreviewProvider {
-    @State static var player: MPMusicPlayerController = MPMusicPlayerController.applicationMusicPlayer
+    static var player: MPMusicPlayerController = MPMusicPlayerController.applicationMusicPlayer
     static var previews: some View {
-        ShuffleButton(shuffleMode: ShuffleButton_Previews.$player.shuffleMode)
+        ShuffleButton(player: ShuffleButton_Previews.player)
     }
 }
