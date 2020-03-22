@@ -11,7 +11,7 @@ import RxSwift
 import SwiftUI
 
 struct PlayerView: View {
-    @State var player: MPMusicPlayerController
+    let player: MPMusicPlayerController
     @State var repeatMode: MPMusicRepeatMode = MPMusicPlayerApplicationController.applicationMusicPlayer.repeatMode
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
@@ -23,7 +23,7 @@ struct PlayerView: View {
                     .cornerRadius(8)
                     .clipped()
                     .padding(.bottom, 30)
-                Player(player: $player)
+                Player(player: player)
             }
             .padding(.horizontal, 20)
             .padding(.top, 40)

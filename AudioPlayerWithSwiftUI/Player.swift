@@ -10,15 +10,15 @@ import MediaPlayer
 import SwiftUI
 
 struct Player: View {
-    @Binding var player: MPMusicPlayerController
+    private var player: MPMusicPlayerController
     private var playingItem: MPMediaItem? {
         return player.nowPlayingItem
     }
 
     @ObservedObject private var observer: NowPlayingItemObserver
-    init(player: Binding<MPMusicPlayerController>) {
-        _player = player
-        observer = .init(player: player.wrappedValue)
+    init(player: MPMusicPlayerController) {
+        self.player = player
+        observer = .init(player: player)
     }
 
     var body: some View {
@@ -29,8 +29,8 @@ struct Player: View {
                     Text(observer.playingItem?.artist ?? "Artist").font(.system(size: 17)).foregroundColor(.pink).lineLimit(2)
                 }
                 Spacer()
-                ShuffleButton(shuffleMode: $player.shuffleMode)
-                RepeatButton(repeatMode: $player.repeatMode)
+                ShuffleButton(player: player)
+                RepeatButton(player: player)
             }
             SeekBar(player: player)
             PlaybackControl(player: player)
@@ -39,8 +39,8 @@ struct Player: View {
 }
 
 struct Player_Previews: PreviewProvider {
-    @State static var player = MPMusicPlayerController.applicationMusicPlayer
+    static var player = MPMusicPlayerController.applicationMusicPlayer
     static var previews: some View {
-        Player(player: Player_Previews.$player)
+        Player(player: Player_Previews.player)
     }
 }
