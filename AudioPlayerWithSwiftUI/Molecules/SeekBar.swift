@@ -12,7 +12,11 @@ import SwiftUI
 struct SeekBar: View {
     let player: MPMusicPlayerController
     @State var isEditing: Bool = false
-    @State var time: TimeInterval = 0
+    @State var time: TimeInterval
+    init(player: MPMusicPlayerController) {
+        self.player = player
+        self._time = .init(initialValue: player.currentPlaybackTime)
+    }
 
     var body: some View {
         let playbackDuration = self.player.nowPlayingItem?.playbackDuration ?? 0
