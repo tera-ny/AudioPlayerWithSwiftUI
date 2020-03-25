@@ -13,18 +13,22 @@ struct Playback: View {
     private class PlaybackObserver: ObservableObject {
         @Published var state: MPMusicPlaybackState
         private var player: MPMusicPlayerController
-        private var observer: Any?
+        private var observers: [Any] = []
         init(player: MPMusicPlayerController) {
             self.player = player
             state = player.playbackState
             player.beginGeneratingPlaybackNotifications()
-            observer = NotificationCenter.default.addObserver(forName: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: nil, queue: nil, using: updatePlayback(_:))
+            observers = [NotificationCenter.default.addObserver(forName: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: nil, queue: nil, using: updatePlayback(_:)),
+                         NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil, using: updatePlayback(_:))
+            ]
             player.endGeneratingPlaybackNotifications()
             
         }
 
         deinit {
-            NotificationCenter.default.removeObserver(observer!)
+            observers.forEach { observer in
+                NotificationCenter.default.removeObserver(observer)
+            }
         }
 
         func updatePlayback(_: Notification) {

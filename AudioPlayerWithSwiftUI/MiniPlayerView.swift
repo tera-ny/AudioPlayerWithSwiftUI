@@ -53,6 +53,6 @@ struct MiniPlayerView: View {
 
 struct MiniPlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        MiniPlayerView(height: 55)
+        MiniPlayerView(height: 55, player: .applicationQueuePlayer)
     }
 }

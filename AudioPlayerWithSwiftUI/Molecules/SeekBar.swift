@@ -44,6 +44,6 @@ struct SeekBar: View {
 
 struct SeekBar_Previews: PreviewProvider {
     static var previews: some View {
-        SeekBar(player: MPMusicPlayerController.applicationMusicPlayer)
+        SeekBar(player: .applicationMusicPlayer)
     }
 }

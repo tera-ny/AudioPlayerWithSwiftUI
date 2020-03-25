@@ -27,15 +27,6 @@
           "revision": "c1bd31b397d87a54467af4161dde9d6b27720c19",
           "version": "5.1.0"
         }
-      },
-      {
-        "package": "SwiftUIX",
-        "repositoryURL": "https://github.com/g4zeru/SwiftUIX",
-        "state": {
-          "branch": "master",
-          "revision": "8f7d4b894f750b544e197881b4aeb029980323bc",
-          "version": null
-        }
       }
     ]
   },
