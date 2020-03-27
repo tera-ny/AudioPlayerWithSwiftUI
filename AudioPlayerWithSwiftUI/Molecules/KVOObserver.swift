@@ -10,14 +10,14 @@ import Foundation
 import MediaPlayer
 import WebKit
 
-class KVOObserver<Object: NSObject,Value>: ObservableObject {
+class KVOObserver<Object: NSObject, Value>: ObservableObject {
     var disposeBag = [NSKeyValueObservation]()
     @Published var observedObject: Value!
     var monitoredObject: Object
-    init(monitoredObject: Object, keypath: KeyPath<Object, Value> ) {
-        self.observedObject = monitoredObject[keyPath: keypath]
+    init(monitoredObject: Object, keypath: KeyPath<Object, Value>) {
+        observedObject = monitoredObject[keyPath: keypath]
         self.monitoredObject = monitoredObject
-        disposeBag.append(monitoredObject.observe(keypath, options: .new) { [weak self] (monitored, _) in
+        disposeBag.append(monitoredObject.observe(keypath, options: .new) { [weak self] _, _ in
             self?.observedObject = monitoredObject[keyPath: keypath]
         })
     }

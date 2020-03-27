@@ -15,7 +15,7 @@ struct SeekBar: View {
     @State var time: TimeInterval
     init(player: MPMusicPlayerController) {
         self.player = player
-        self._time = .init(initialValue: player.currentPlaybackTime)
+        _time = .init(initialValue: player.currentPlaybackTime)
     }
 
     var body: some View {

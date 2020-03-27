@@ -16,6 +16,7 @@ struct RepeatButton: View {
         self.player = player
         observer = .init(monitoredObject: player, keypath: \.repeatMode)
     }
+
     let imageHeight: CGFloat = 17
     var body: some View {
         let repeatMode: MPMusicRepeatMode = observer.observedObject
