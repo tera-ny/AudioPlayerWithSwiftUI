@@ -17,6 +17,7 @@ struct ShuffleButton: View {
         observer = .init(monitoredObject: player, keypath: \.shuffleMode)
         self.player = player
     }
+
     var body: some View {
         let shuffleMode: MPMusicShuffleMode = observer.observedObject
         return Button(action: {
@@ -38,7 +39,7 @@ struct ShuffleButton: View {
                     default:
                         return .pink
                     }
-                    }())
+                }())
         }
     }
 }

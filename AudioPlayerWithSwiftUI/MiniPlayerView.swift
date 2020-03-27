@@ -30,7 +30,7 @@ struct MiniPlayerView: View {
             }
             Text(observer.playingItem?.title ?? "再生停止中")
                 .lineLimit(2)
-                .font(.system(size: 17 ,weight: .medium))
+                .font(.system(size: 17, weight: .medium))
             Spacer()
             Playback(player: player)
                 .frame(height: 23)

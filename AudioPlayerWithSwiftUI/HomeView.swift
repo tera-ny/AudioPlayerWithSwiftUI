@@ -19,9 +19,10 @@ struct HomeView: View {
         case Genre
     }
 
-    private class QueueObserver {
+    private class EnQueueController {
         private var token: String?
         private var dispatcher: QueueDispatcher
+
         deinit {
             dispatcher.unSubscribe(token: token!)
         }
@@ -43,12 +44,12 @@ struct HomeView: View {
     @State private var shouldPresent: Bool = false
     private let miniPlayerHeight: CGFloat = 70
     private let player: MPMusicPlayerController
-    private let queueObserver: QueueObserver
+    private let queueObserver: EnQueueController
 
     init() {
         MPMediaLibrary.requestAuthorization { _ in }
         player = .applicationMusicPlayer
-        queueObserver = QueueObserver(dispatcher: .shared, player: player)
+        queueObserver = EnQueueController(dispatcher: .shared, player: .applicationQueuePlayer)
     }
 
     var body: some View {
@@ -90,7 +91,7 @@ struct HomeView: View {
                         } else {
                             NavigationLink(destination: element.view) {
                                 Text(element.rawValue)
-                                .font(.system(size: 25))
+                                    .font(.system(size: 25))
                             }
                         }
                     }
