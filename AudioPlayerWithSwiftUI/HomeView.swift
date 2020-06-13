@@ -49,7 +49,7 @@ struct HomeView: View {
     init() {
         MPMediaLibrary.requestAuthorization { _ in }
         player = .applicationMusicPlayer
-        queueObserver = EnQueueController(dispatcher: .shared, player: .applicationQueuePlayer)
+        queueObserver = EnQueueController(dispatcher: .shared, player: .applicationMusicPlayer)
     }
 
     var body: some View {
