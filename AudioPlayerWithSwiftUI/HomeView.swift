@@ -54,7 +54,6 @@ struct HomeView: View {
 
     var body: some View {
         let state = MPMediaLibrary.authorizationStatus()
-        print(state)
         return ZStack(alignment: .bottom) {
             NavigationView {
                 VStack {
@@ -89,7 +88,7 @@ struct HomeView: View {
                                     .foregroundColor(.secondary)
                             }
                         } else {
-                            NavigationLink(destination: element.view) {
+                            NavigationLink(destination: element.view()) {
                                 Text(element.rawValue)
                                     .font(.system(size: 25))
                             }
@@ -97,7 +96,8 @@ struct HomeView: View {
                     }
                     .navigationBarTitle(Text("Home"))
                 }
-            }.padding(.bottom, miniPlayerHeight)
+            }
+            .padding(.bottom, miniPlayerHeight)
             MiniPlayerView(height: miniPlayerHeight, player: player)
                 .onTapGesture {
                     self.shouldPresent = self.player.nowPlayingItem != nil
@@ -129,16 +129,18 @@ extension HomeView.HomeListElement {
         }
     }
 
-    var view: AnyView {
-        switch self {
-        case .Albums:
-            return AnyView(AlbumListView().navigationBarTitle(Text("Albums")))
-        case .Artist:
-            return AnyView(ArtistListView())
-        case .Songs:
-            return AnyView(SongsListView())
-        default:
-            return AnyView(ContentView())
+    @ViewBuilder func view() -> some View {
+        ZStack {
+            switch self {
+            case .Albums:
+                AlbumListView().navigationBarTitle(Text("Albums"))
+            case .Artist:
+                AnyView(ArtistListView())
+            case .Songs:
+                AnyView(SongsListView())
+            default:
+                Text("")
+            }
         }
     }
 }
