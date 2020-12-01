@@ -3,20 +3,11 @@
     "pins": [
       {
         "package": "Napoli",
-        "repositoryURL": "https://github.com/g4zeru/Napoli",
+        "repositoryURL": "https://github.com/tera-ny/Napoli.git",
         "state": {
           "branch": null,
           "revision": "d988ecd4fe13ff3dec16e45af172a2c6343b7324",
           "version": "0.0.1"
-        }
-      },
-      {
-        "package": "QGrid",
-        "repositoryURL": "https://github.com/Q-Mobile/QGrid.git",
-        "state": {
-          "branch": null,
-          "revision": "40607aec336a8097c94bcadb81762592d89073ac",
-          "version": "0.1.3"
         }
       },
       {

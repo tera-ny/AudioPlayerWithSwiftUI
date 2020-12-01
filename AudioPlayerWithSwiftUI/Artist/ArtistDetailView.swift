@@ -7,7 +7,6 @@
 //
 
 import MediaPlayer
-import QGrid
 import SwiftUI
 
 struct ArtistDetailView: View {
@@ -21,10 +20,14 @@ struct ArtistDetailView: View {
     }
 
     var body: some View {
-        QGrid(query.collections?.compactMap { Album(collection: $0) } ?? [], columns: 2) { album in
-            NavigationLink(destination: AlbumDetailView(album: album)) {
-                AlbumCell(album: album)
-            }
+        ScrollView {
+            LazyVGrid(columns: [GridItem(), GridItem()], content: {
+                ForEach(query.collections?.compactMap { Album(collection: $0) } ?? []) { album  in
+                    NavigationLink(destination: AlbumDetailView(album: album)) {
+                        AlbumCell(album: album)
+                    }
+                }
+            })
         }
         .navigationBarTitle(Text(artist))
     }

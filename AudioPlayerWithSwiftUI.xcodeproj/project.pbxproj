@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F615CB52576999B0013C522 /* Napoli in Frameworks */ = {isa = PBXBuildFile; productRef = 5F615CB42576999B0013C522 /* Napoli */; };
 		B926B51823AB2EF0000B73ED /* SongsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B926B51723AB2EF0000B73ED /* SongsListView.swift */; };
 		B94825922425C5D900929C76 /* KVOObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94825912425C5D900929C76 /* KVOObserver.swift */; };
 		B955524D24279B01002571CD /* ApplicationAssertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B955524C24279B01002571CD /* ApplicationAssertError.swift */; };
@@ -21,7 +22,6 @@
 		B978DC9E241FD2C4003D7206 /* PlaybackControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978DC9D241FD2C4003D7206 /* PlaybackControl.swift */; };
 		B99220FD23A3ACC8000F1277 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99220FC23A3ACC8000F1277 /* AppDelegate.swift */; };
 		B99220FF23A3ACC8000F1277 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99220FE23A3ACC8000F1277 /* SceneDelegate.swift */; };
-		B992210123A3ACC8000F1277 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B992210023A3ACC8000F1277 /* ContentView.swift */; };
 		B992210623A3ACCC000F1277 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B992210523A3ACCC000F1277 /* Preview Assets.xcassets */; };
 		B992210923A3ACCC000F1277 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B992210723A3ACCC000F1277 /* LaunchScreen.storyboard */; };
 		B992212D23A3AD79000F1277 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B992212C23A3AD79000F1277 /* HomeView.swift */; };
@@ -37,8 +37,6 @@
 		B992215423A403BF000F1277 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B992215323A403BF000F1277 /* RxCocoa */; };
 		B992215723A49107000F1277 /* ArtistListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B992215623A49107000F1277 /* ArtistListView.swift */; };
 		B992215923A4927A000F1277 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = B992215823A4927A000F1277 /* Artist.swift */; };
-		B992216023A498AA000F1277 /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = B992215F23A498AA000F1277 /* QGrid */; };
-		B9AD7E982420EC5B00A16771 /* Napoli in Frameworks */ = {isa = PBXBuildFile; productRef = B9AD7E972420EC5B00A16771 /* Napoli */; };
 		B9AD7E9C24226D7E00A16771 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9AD7E9B24226D7E00A16771 /* Assets.xcassets */; };
 		B9E3DEB7241CDCEF00296CC6 /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E3DEB6241CDCEF00296CC6 /* AlbumCell.swift */; };
 		B9E3DEB9241CDD0E00296CC6 /* ArtistDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E3DEB8241CDD0E00296CC6 /* ArtistDetailView.swift */; };
@@ -73,7 +71,6 @@
 		B99220F923A3ACC8000F1277 /* sounds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sounds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B99220FC23A3ACC8000F1277 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B99220FE23A3ACC8000F1277 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B992210023A3ACC8000F1277 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B992210523A3ACCC000F1277 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B992210823A3ACCC000F1277 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B992210A23A3ACCC000F1277 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -107,10 +104,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B992216023A498AA000F1277 /* QGrid in Frameworks */,
 				B992215423A403BF000F1277 /* RxCocoa in Frameworks */,
+				5F615CB52576999B0013C522 /* Napoli in Frameworks */,
 				B992215223A403BF000F1277 /* RxSwift in Frameworks */,
-				B9AD7E982420EC5B00A16771 /* Napoli in Frameworks */,
 				B992215023A403BF000F1277 /* RxRelay in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,7 +151,6 @@
 				B9E3DEB5241CDCA300296CC6 /* Molecules */,
 				B992213D23A3ECE6000F1277 /* MiniPlayerView.swift */,
 				B95655432420E6E800FBD808 /* Dispatcher.swift */,
-				B992210023A3ACC8000F1277 /* ContentView.swift */,
 				B926B51723AB2EF0000B73ED /* SongsListView.swift */,
 				B978DC94241FA246003D7206 /* Player.swift */,
 				B95655412420E02300FBD808 /* NowPlayingItemObserver.swift */,
@@ -271,8 +266,7 @@
 				B992214F23A403BF000F1277 /* RxRelay */,
 				B992215123A403BF000F1277 /* RxSwift */,
 				B992215323A403BF000F1277 /* RxCocoa */,
-				B992215F23A498AA000F1277 /* QGrid */,
-				B9AD7E972420EC5B00A16771 /* Napoli */,
+				5F615CB42576999B0013C522 /* Napoli */,
 			);
 			productName = AudioPlayerWithSwiftUI;
 			productReference = B99220F923A3ACC8000F1277 /* sounds.app */;
@@ -308,8 +302,7 @@
 			mainGroup = B99220F023A3ACC8000F1277;
 			packageReferences = (
 				B992214E23A403BF000F1277 /* XCRemoteSwiftPackageReference "RxSwift" */,
-				B992215E23A498AA000F1277 /* XCRemoteSwiftPackageReference "QGrid" */,
-				B9AD7E962420EC5B00A16771 /* XCRemoteSwiftPackageReference "Napoli" */,
+				5F615CB32576999B0013C522 /* XCRemoteSwiftPackageReference "Napoli" */,
 			);
 			productRefGroup = B99220FA23A3ACC8000F1277 /* Products */;
 			projectDirPath = "";
@@ -367,7 +360,6 @@
 				B992213A23A3DC90000F1277 /* Utils.swift in Sources */,
 				B992213E23A3ECE6000F1277 /* MiniPlayerView.swift in Sources */,
 				B99220FF23A3ACC8000F1277 /* SceneDelegate.swift in Sources */,
-				B992210123A3ACC8000F1277 /* ContentView.swift in Sources */,
 				B9E3DEB9241CDD0E00296CC6 /* ArtistDetailView.swift in Sources */,
 				B992212F23A3BC29000F1277 /* AlbumListView.swift in Sources */,
 				B95655402420D98400FBD808 /* Playback.swift in Sources */,
@@ -569,7 +561,7 @@
 				DEVELOPMENT_TEAM = 8446Z6F5D6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = AudioPlayerWithSwiftUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -590,7 +582,7 @@
 				DEVELOPMENT_TEAM = 8446Z6F5D6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = AudioPlayerWithSwiftUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -635,6 +627,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5F615CB32576999B0013C522 /* XCRemoteSwiftPackageReference "Napoli" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tera-ny/Napoli.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
 		B992214E23A403BF000F1277 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -643,25 +643,14 @@
 				minimumVersion = 5.0.1;
 			};
 		};
-		B992215E23A498AA000F1277 /* XCRemoteSwiftPackageReference "QGrid" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Q-Mobile/QGrid.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.3;
-			};
-		};
-		B9AD7E962420EC5B00A16771 /* XCRemoteSwiftPackageReference "Napoli" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/g4zeru/Napoli";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5F615CB42576999B0013C522 /* Napoli */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F615CB32576999B0013C522 /* XCRemoteSwiftPackageReference "Napoli" */;
+			productName = Napoli;
+		};
 		B992214F23A403BF000F1277 /* RxRelay */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B992214E23A403BF000F1277 /* XCRemoteSwiftPackageReference "RxSwift" */;
@@ -676,16 +665,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B992214E23A403BF000F1277 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
-		};
-		B992215F23A498AA000F1277 /* QGrid */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B992215E23A498AA000F1277 /* XCRemoteSwiftPackageReference "QGrid" */;
-			productName = QGrid;
-		};
-		B9AD7E972420EC5B00A16771 /* Napoli */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B9AD7E962420EC5B00A16771 /* XCRemoteSwiftPackageReference "Napoli" */;
-			productName = Napoli;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

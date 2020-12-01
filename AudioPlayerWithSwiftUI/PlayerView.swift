@@ -60,7 +60,7 @@ struct PlayerView: View {
                             HStack {
                                 Text(item.title ?? "")
                                     .foregroundColor(
-                                        Color({
+                                        Color({ () -> UIColor in
                                             if item.persistentID == self.observer.playingItem?.persistentID {
                                                 return .systemPink
                                             } else {

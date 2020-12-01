@@ -7,19 +7,21 @@
 //
 
 import MediaPlayer
-import QGrid
 import SwiftUI
 
 struct AlbumListView: View {
     var body: some View {
-        QGrid(MPMediaQuery.albums()
-            .collections?
-            .compactMap { Album(collection: $0) } ?? [],
-              columns: UIDevice.current.orientation.isLandscape ? 3 : 2, vPadding: 0) { album in
-            NavigationLink(destination: AlbumDetailView(album: album)) {
-                AlbumCell(album: album)
-            }
-        }
+        ScrollView(content: {
+            LazyVGrid(columns: [GridItem(), GridItem()], spacing: 20, content: {
+                ForEach(MPMediaQuery.albums().collections?.compactMap { Album(collection: $0) } ?? []) { album in
+                    NavigationLink(
+                        destination: AlbumDetailView(album: album),
+                        label: {
+                            AlbumCell(album: album)
+                        })
+                }
+            }).padding(.horizontal, 20)
+        })
     }
 }
 
