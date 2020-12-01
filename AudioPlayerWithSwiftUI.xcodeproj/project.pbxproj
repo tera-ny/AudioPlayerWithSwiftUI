@@ -151,7 +151,6 @@
 			isa = PBXGroup;
 			children = (
 				B99220FC23A3ACC8000F1277 /* AppDelegate.swift */,
-				B9E3DEB4241CDC8E00296CC6 /* Atoms */,
 				B99220FE23A3ACC8000F1277 /* SceneDelegate.swift */,
 				B9E3DEB5241CDCA300296CC6 /* Molecules */,
 				B992213D23A3ECE6000F1277 /* MiniPlayerView.swift */,
@@ -218,13 +217,6 @@
 				B9E3DEBC241D0B1700296CC6 /* VisualEffect.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		B9E3DEB4241CDC8E00296CC6 /* Atoms */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Atoms;
 			sourceTree = "<group>";
 		};
 		B9E3DEB5241CDCA300296CC6 /* Molecules */ = {
