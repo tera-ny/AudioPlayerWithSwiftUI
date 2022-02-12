@@ -2,8 +2,8 @@
 //  AudioPlayerWithSwiftUITests.swift
 //  AudioPlayerWithSwiftUITests
 //
-//  Created by iniad on 2019/12/13.
-//  Copyright © 2019 g4zeru. All rights reserved.
+//  Created by teranyan on 2019/12/13.
+//  Copyright © 2019 teranyan. All rights reserved.
 //
 
 @testable import AudioPlayerWithSwiftUI

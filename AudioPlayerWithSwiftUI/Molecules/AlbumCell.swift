@@ -2,8 +2,8 @@
 //  AlbumCell.swift
 //  AudioPlayerWithSwiftUI
 //
-//  Created by iniad on 2019/12/14.
-//  Copyright © 2019 g4zeru. All rights reserved.
+//  Created by teranyan on 2019/12/14.
+//  Copyright © 2019 teranyan. All rights reserved.
 //
 
 import SwiftUI
